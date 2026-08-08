@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Transformation — Isaac TWI</title>
+  <style>
+    .menu-item { cursor: pointer; transition: all 0.2s; }
+    .menu-item:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
+    .menu-item .item-cta { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mercury-blue); margin-top: 0.8rem; display: block; }
+    .tier { cursor: pointer; transition: all 0.2s; }
+    .tier:hover { border-color: rgba(125,211,252,0.2); transform: translateY(-2px); }
+
+    /* Big red demo modal */
+    .demo-modal { display:none; position:fixed; inset:0; z-index:10000; background:rgba(4,4,14,0.94); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
+    .demo-modal.open { display:flex; align-items:center; justify-content:center; animation: dm-in 0.2s ease-out; }
+    @keyframes dm-in { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
+    .demo-modal-box { max-width:440px; width:100%; margin:2rem; text-align:center; }
+    .demo-modal-close { position:fixed; top:1.5rem; right:2rem; background:none; border:none; color:var(--text-3); font-size:2rem; cursor:pointer; z-index:10001; }
+    .demo-modal-close:hover { color:var(--text-1); }
+    .demo-modal-selected { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--mercury-teal); margin-bottom:1.5rem; }
+    .demo-modal-q { font-weight:700; font-size:1.6rem; color:var(--text-1); margin-bottom:0.8rem; }
+    .demo-modal-sub { font-size:0.85rem; color:var(--text-2); margin-bottom:2rem; line-height:1.6; }
+    .big-red { display:inline-block; font-family:var(--mono); font-size:1rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; background:linear-gradient(135deg, #ef4444, #dc2626); padding:1.2rem 3rem; border-radius:var(--r-md); text-decoration:none; transition:all 0.2s; cursor:pointer; border:none; box-shadow:0 0 30px rgba(239,68,68,0.3), 0 4px 20px rgba(0,0,0,0.4); }
+    .big-red:hover { filter:brightness(1.15); transform:translateY(-2px); box-shadow:0 0 50px rgba(239,68,68,0.4), 0 8px 30px rgba(0,0,0,0.5); }
+    .demo-skip { font-family:var(--mono); font-size:0.6rem; color:var(--text-3); text-decoration:none; display:block; margin-top:1.5rem; }
+    .demo-skip:hover { color:var(--text-2); }
+    .demo-note { font-size:0.65rem; color:var(--text-3); margin-top:1.5rem; font-style:italic; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="isaac.html" class="logo">Isaac — TWI</a>
+    <div class="nav-links">
+      <a href="learn.html">Learn</a>
+      <a href="build.html">Jobworld</a>
+      <a href="transform.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a href="apply.html" class="nav-cta">Book a Call</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section style="padding-top:6rem;">
+    <div style="max-width:56ch;">
+      <div class="tag">AI Transformation</div>
+      <h1>Get your business<br>future-ready for AI.</h1>
+      <p class="sub">
+        I help businesses figure out what to automate, then I build it. Pre-built AI automations you can deploy now. Custom builds for the things only your business does. <strong>Start with a conversation.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- 1 HOUR WITH ISAAC (me2B offer) -->
+  <section>
+    <div class="tag">Start here</div>
+    <h2>1 hour with Isaac.</h2>
+    <p class="sub" style="max-width:56ch;">
+      You talk. I answer. Frameworks, direct questions, the patterns that work. You leave with a clear picture of what to automate first.
+    </p>
+    <p class="sub" style="max-width:56ch;">
+      I won't build anything on this call. I won't design your custom system. I will give you the thinking so you can decide: do it yourself, or hire me to do it.
+    </p>
+    <a href="#" class="cta-big" data-offer="1-hour">Book 1 Hour</a>
+    <p style="font-size:0.75rem;color:var(--text-3);margin-top:1rem;">$149 · 55 minutes · Zoom · Recording included</p>
+  </section>
+
+  <!-- HIGH CONVERTING $10K WEBSITES (B2B entry point) -->
+  <section class="dark">
+    <div class="tag">B2B · The $10k website, for $149/mo</div>
+    <h2>High Converting $10k Websites.</h2>
+    <p class="sub" style="max-width:56ch;">
+      What an agency charges <strong>$10,000 up front</strong> — a custom-designed, copy-optimized, SEO-built website — built, hosted, and managed for <strong>$149/mo. Cancel anytime.</strong> We design it, write it, ship it, and you can request changes whenever you want.
+    </p>
+    <p class="sub" style="max-width:56ch;">
+      Heavy usage of change requests (major redesigns, full copy rewrites, new feature builds) may incur extra charges depending on scope. Day-to-day tweaks, copy edits, and small additions are included.
+    </p>
+    <a href="#" class="cta-big" data-offer="website">Get Your Website</a>
+    <p style="font-size:0.75rem;color:var(--text-3);margin-top:1rem;">$149/mo managed · Custom design · Copy + SEO · Change requests included</p>
+    <p class="scarcity" style="margin-top:1.2rem;">I take on 3 clients at a time. When spots are full, they're full.</p>
+
+    <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--glass-border);">
+      <p style="font-size:0.85rem;color:var(--text-2);max-width:56ch;">
+        <strong style="color:var(--text-1);">This is the foundation.</strong> Everything below runs on top of a website that actually converts. Blog generator, phone agent, lead gen, custom automations, SOMA — they all assume you have a destination. The website is the destination.
+      </p>
+    </div>
+  </section>
+
+  <!-- VIDEO / VSL -->
+  <section>
+    <div style="aspect-ratio:16/9;border:1px solid var(--glass-border);border-radius:var(--r-lg);overflow:hidden;background:#000;max-width:900px;margin:0 auto;">
+      <iframe src="https://www.youtube.com/embed/GCl6WmuSr8g" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="width:100%;height:100%;border:none;display:block;"></iframe>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="dark">
+    <div class="tag">How it works</div>
+    <h2>Audit. Deploy. Run.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Demo call</h3>
+        <p>Our AI walks you through what we'd build for your business — live. If you like what you see, it can get you started right there. If not, it books a free call with Isaac.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>We build it</h3>
+        <p>Pre-built automations deploy in days. Custom builds take a quarter. Either way — in 30 days you'll have a working automation deployed and a documented roadmap, or you don't pay for the build.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>It runs — you supervise</h3>
+        <p>It handles the repetitive work day to day, with your team supervising — not another tool you babysit. You own everything, and it gets more capable over time, not more complex.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GENERATIVE R&D -->
+  <section>
+    <div class="tag">New &middot; Generative R&amp;D</div>
+    <h2>We map every product you could already sell.</h2>
+    <p style="font-size:0.9rem;color:var(--text-2);max-width:62ch;margin-bottom:1rem;">
+      Everything you sell is a combination of options you already own &mdash; and you're selling the
+      handful of combinations history happened to hand you. We model your option space, enumerate
+      it, certify what you already claim, and hand you the map of the rest. When the market moves,
+      you answer with a <strong>lookup</strong> while competitors schedule a product-development meeting.
+    </p>
+    <p style="font-size:0.9rem;color:var(--text-2);max-width:62ch;margin-bottom:1rem;">
+      The worked demonstration: a famous burger menu has <strong>972 valid combinations</strong>. The published
+      menu claims <strong>3</strong>. The secret menu &mdash; combinations customers found on their own &mdash; proves the
+      market pays for the dark region. <a href="blog/innout-configuration-mining.html" style="color:var(--mercury-blue);">Read the demonstration &rarr;</a>
+    </p>
+    <p style="font-size:0.82rem;color:var(--text-3);max-width:62ch;">
+      <strong style="color:var(--text-2);">"Can't ChatGPT do this?"</strong> It can count your combinations &mdash; once, in a chat that
+      forgets. It cannot hold the space as a navigable, certified map that composes across your
+      products, pricing, and marketing and stays organized on its own. That substrate is our
+      technology; the frontier models work <em>inside</em> it.
+    </p>
+  </section>
+
+  <!-- WHAT I BUILD -->
+  <section id="offers-section">
+    <div class="tag">What I build</div>
+    <h2>AI employees that actually work.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:2rem;">Each one handles a job that used to require a person. Click any to get started.</p>
+
+    <div class="menu-grid">
+      <div class="menu-item" data-offer="AI Phone Agent">
+        <h3>AI Phone Agent</h3>
+        <p>Answers calls, qualifies leads, books meetings. 24/7. Every lead answered in 60 seconds. The first thing every business should have.</p>
+        <span class="item-cta">Get this &rarr;</span>
+      </div>
+      <div class="menu-item" data-offer="Blog Generator">
+        <h3>Blog Generator</h3>
+        <p>AI writes blog posts from your expertise and knowledge base. Consistent voice, SEO-ready, published on schedule. You review, it publishes.</p>
+        <span class="item-cta">Get this &rarr;</span>
+      </div>
+      <div class="menu-item" data-offer="Explainer Video Producer">
+        <h3>Explainer Video Producer</h3>
+        <p>Turns your frameworks, processes, and ideas into polished explainer content — video scripts, visual breakdowns, walkthroughs.</p>
+        <span class="item-cta">Get this &rarr;</span>
+      </div>
+      <div class="menu-item" data-offer="Lead Gen Hyperpersonalization">
+        <h3>Lead Gen Hyperpersonalization</h3>
+        <p>AI researches each prospect individually. Generates personalized outreach — emails, call scripts, conversation starters.</p>
+        <span class="item-cta">Get this &rarr;</span>
+      </div>
+      <div class="menu-item" data-offer="Content Script Writer">
+        <h3>Content Script Writer</h3>
+        <p>AI generates scripts for short-form video, long-form content, presentations. Hook-first, audience-tuned, ready to record.</p>
+        <span class="item-cta">Get this &rarr;</span>
+      </div>
+      <div class="menu-item" data-offer="Personal Project Manager">
+        <h3>Personal Project Manager</h3>
+        <p>An AI that actually manages your projects. Tracks tasks, follows up, identifies blockers, surfaces what matters.</p>
+        <span class="item-cta">Get this &rarr;</span>
+      </div>
+      <div class="menu-item" data-offer="Morning Briefing">
+        <h3>Morning Briefing</h3>
+        <p>Wake up to a daily briefing built from your actual context — what's due, what's blocked, what changed overnight.</p>
+        <span class="item-cta">Get this &rarr;</span>
+      </div>
+      <div class="menu-item" data-offer="Agent Generator">
+        <h3>Agent Generator</h3>
+        <p>Custom AI agents built for your specific roles. A virtual employee that knows your business, your tools, and your processes.</p>
+        <span class="item-cta">Get this &rarr;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVERY CLIENT GETS -->
+  <section>
+    <div class="tag">Every client gets</div>
+    <h2>The platform. The app. The automations.</h2>
+    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:2rem;">Every engagement starts with SANCREV OPERA — the life architecture app — plus Jobworld, the business dashboard. Your automations run on top of these. You own the system.</p>
+  </section>
+
+  <!-- TIERS -->
+  <section class="dark">
+    <div class="tag">Tiers</div>
+    <h2>Four levels. Go as deep as you want.</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem;">
+      <div class="tier highlight" data-offer="Retainer">
+        <div class="tier-badge">Recommended</div>
+        <div class="tier-label">Your AI CTO</div>
+        <div class="tier-name">Retainer</div>
+        <div class="tier-price">Monthly</div>
+        <div class="tier-min">An AI CTO on staff runs ~$180k/yr. This is a fraction of one hire.</div>
+        <ul>
+          <li>2x 55-minute strategy sessions per month</li>
+          <li>AI transformation roadmap — we plan and implement together</li>
+          <li>SANCREV OPERA + Jobworld — yours to keep</li>
+          <li>Unused meetings bank up to 6 months</li>
+          <li>Direct access to Isaac</li>
+        </ul>
+        <div class="tier-note">Limited spots. When they're full, they're full.</div>
+      </div>
+
+      <div class="tier" data-offer="Pre-built Automations">
+        <div class="tier-label">Deploy</div>
+        <div class="tier-name">Pre-built Automations</div>
+        <div class="tier-price">One-time + monthly</div>
+        <ul>
+          <li>Pick from the menu above — customized for your business</li>
+          <li>Deployed, configured, running 24/7</li>
+          <li>Managed and maintained — you don't touch it</li>
+          <li>Cancel any automation anytime</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:1.5rem;">
+      <div class="tier" data-offer="Custom Integrations">
+        <div class="tier-label">Build</div>
+        <div class="tier-name">Custom Integrations</div>
+        <div class="tier-price">Scoped per project</div>
+        <ul>
+          <li>Bespoke automations for your specific processes</li>
+          <li>Connects to your existing tools and workflows</li>
+          <li>Built, tested, and deployed by Isaac</li>
+          <li>Scoped and quoted on a call</li>
+        </ul>
+      </div>
+
+      <div class="tier" data-offer="Intelligence Systems">
+        <div class="tier-label">Transform</div>
+        <div class="tier-name">Intelligence Systems</div>
+        <div class="tier-price">Scoped per project</div>
+        <ul>
+          <li>SOMA-class self-organizing AI</li>
+          <li>Ontology and logic layer</li>
+          <li>System that understands and self-corrects</li>
+          <li>The tier nobody else can offer</li>
+        </ul>
+        <div class="tier-note"><a href="soma.html" style="color:var(--mercury-violet);text-decoration:none;">Learn about SOMA &rarr;</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO MODAL (pops up on any offer click) -->
+  <div class="demo-modal" id="demo-modal">
+    <button class="demo-modal-close" id="demo-modal-close">&times;</button>
+    <div class="demo-modal-box">
+      <div class="demo-modal-selected" id="demo-modal-selected"></div>
+      <div class="demo-modal-q" id="demo-modal-q">Want a live demo?</div>
+      <p class="demo-modal-sub" id="demo-modal-sub">Our AI walks you through exactly what this looks like for your business. 5 minutes. Zero obligation.</p>
+      <button class="big-red" id="demo-yes">YES — SHOW ME</button>
+      <a href="https://cal.com/aisaac/ai-agents-for-your-business" class="demo-skip" id="demo-modal-skip">or just book Isaac directly &rarr;</a>
+      <p class="demo-note">[AI demo launching soon — book Isaac in the meantime]</p>
+    </div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <section class="dark">
+    <div class="guarantee">
+      <h3>30-Day Guarantee</h3>
+      <p>In 30 days you'll have a working automation deployed and a documented roadmap — or you don't pay for the build. The condition: show up, give access, follow the process.</p>
+    </div>
+
+    <div class="soma-callout">
+      <div class="soma-callout-text">
+        <h3>Want AI that checks its own work?</h3>
+        <p>SOMA-Class AI — Self Organizing Meta Architecture. We bootstrap an ontology and logic layer so your automations don't just run tasks — they <em>understand</em> your business and self-correct. The tier nobody else can offer.</p>
+      </div>
+      <a href="soma.html" class="soma-cta">Learn about SOMA &rarr;</a>
+    </div>
+  </section>
+
+  <!-- HONEST -->
+  <div class="honest">
+    <div class="tag">Where are the case studies?</div>
+    <h2>You're looking at them.</h2>
+    <p>Rather than giving you a bunch of silly "case studies" about how other businesses obviously benefit from automation — yeah, it works, that's not the question — I'll just direct you to the systems here that we use.</p>
+    <p>As you can see, we have all these <a href="blog/" style="color:var(--mercury-blue);">frameworks</a>. But what you don't see immediately is that every one of them exists because we <em>use it</em>. We use it with the AIs. That's how all of these things exist.</p>
+    <p>Go look at the blog posts. They're all the same template. How did I get that? Because we — the AIs I make and myself — do what I say. Why don't you see this anywhere else? Because they don't care. I do.</p>
+    <p>We use them. The deliverables all get made in these patterns. And it's working on you right now. It'll work for you, too. <strong>It's a program, not magic.</strong></p>
+  </div>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="tag">Start here</div>
+    <h2>See it in action. Then decide.</h2>
+    <p>A 5-minute AI demo that shows you exactly what we'd build for your business. No pitch, no pressure.</p>
+    <a href="#" class="cta-big" data-offer="general" style="margin-top:2rem;">Get a Demo</a>
+    <p class="scarcity">I take on 3 clients at a time. When spots are full, they're full.</p>
+  </section>
+
+  <!-- RECEIPTS STRIP -->
+  <section class="receipts dark">
+    <div class="tag">Receipts, not testimonials</div>
+    <h2>Don't take my word for it — take the code.</h2>
+    <p class="receipts-lede">Instead of a logo wall, here's the public proof-of-work: the engine is open source, the demo is a real site, and the notes are out in the open.</p>
+    <div class="receipts-grid">
+      <a href="https://github.com/sancovp" class="receipt">
+        <div class="receipt-k">Open source</div>
+        <h3>The engine, on GitHub</h3>
+        <p>Installable and public: <b>heaven-framework</b>, <b>chaincompiler</b>, <b>carton-mcp</b>, <b>skilltree</b>. Read it, run it, fork it.</p>
+        <span class="receipt-go">github.com/sancovp &rarr;</span>
+      </a>
+      <a href="cinematic-plumbing.html" class="receipt">
+        <div class="receipt-k">Live demo</div>
+        <h3>A real site we built</h3>
+        <p>Dickinson Plumbing — a working, converting site produced by the system. Not a mockup.</p>
+        <span class="receipt-go">See the build &rarr;</span>
+      </a>
+      <a href="blog/" class="receipt">
+        <div class="receipt-k">Open notes</div>
+        <h3>The research, in the open</h3>
+        <p>The frameworks and notes behind the work — published as we go, not locked in a deck.</p>
+        <span class="receipt-go">Read the notes &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <p class="system-link"><a href="system.html">&#9672; Services is one part of the system — see the map &rarr;</a></p>
+
+  <div class="footer">
+    <span>&copy; 2026 Isaac &mdash; TWI</span>
+    <span style="color:var(--text-3);font-style:italic;">Built with AI. The site — and the systems I sell.</span>
+  </div>
+
+<script>
+(function() {
+  var modal = document.getElementById('demo-modal');
+  var label = document.getElementById('demo-modal-selected');
+  var modalQ = document.getElementById('demo-modal-q');
+  var modalSub = document.getElementById('demo-modal-sub');
+  var modalYes = document.getElementById('demo-yes');
+  var modalSkip = document.getElementById('demo-modal-skip');
+
+  var b2bLink = 'https://cal.com/aisaac/ai-agents-for-your-business';
+  var oneHourLink = 'https://cal.com/aisaac/paid-session';
+  var websiteLink = 'https://cal.com/aisaac/website';
+
+  function openDemo(offer) {
+    label.textContent = offer === 'general' ? '' : offer;
+    if (offer === '1-hour') {
+      modalQ.textContent = 'Book 1 hour with Isaac';
+      modalSub.textContent = '55 minutes. Zoom. Recording included. I will not design your build on this call — I will give you the frameworks to decide whether to do it yourself or hire me.';
+      modalYes.textContent = 'BOOK THE HOUR';
+      modalYes.dataset.link = oneHourLink;
+      modalSkip.href = websiteLink;
+      modalSkip.textContent = 'or get a $10k website for $149/mo instead →';
+    } else if (offer === 'website') {
+      modalQ.textContent = 'Get your $10k website';
+      modalSub.textContent = '$149/mo managed. Custom design, copy + SEO, change requests included. We design it, write it, ship it. You own it. Tell us about your business and we will start the build.';
+      modalYes.textContent = 'START MY WEBSITE';
+      modalYes.dataset.link = websiteLink;
+      modalSkip.href = oneHourLink;
+      modalSkip.textContent = 'or just talk to Isaac for an hour instead →';
+    } else {
+      modalQ.textContent = 'Want a live demo?';
+      modalSub.textContent = 'Our AI walks you through exactly what this looks like for your business. 5 minutes. Zero obligation.';
+      modalYes.textContent = 'YES — SHOW ME';
+      modalYes.dataset.link = b2bLink;
+      modalSkip.href = oneHourLink;
+      modalSkip.textContent = 'or just book Isaac directly →';
+    }
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    try { localStorage.setItem('twi_selected_offer', offer); } catch(e) {}
+  }
+  function closeDemo() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Any offer/tier/CTA click → big red modal
+  document.addEventListener('click', function(e) {
+    var item = e.target.closest('[data-offer]');
+    if (item) { e.preventDefault(); openDemo(item.dataset.offer); }
+  });
+
+  document.getElementById('demo-modal-close').addEventListener('click', closeDemo);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeDemo(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDemo(); });
+
+  // Big red YES
+  document.getElementById('demo-yes').addEventListener('click', function() {
+    var link = this.dataset.link || b2bLink;
+    window.location.href = link;
+  });
+})();
+</script>
+
+</body>
+</html>

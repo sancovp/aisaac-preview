@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Body: Tsa, Lung, Tigle — Dharma Concierge</title>
+<meta name="description" content="The subtle body is not metaphor. Channels, winds, and essences are the physical ground where the five wisdoms manifest — the same holographic pattern that runs through everything else on the path.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#000;--white:#f5f0e8;--muted:rgba(245,240,232,.55);--gold:#c4a265;--gold-deep:#8b6914;--font-display:'Instrument Serif',serif;--font-body:'Inter',sans-serif}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:var(--font-body);color:var(--white);background:var(--bg);-webkit-font-smoothing:antialiased}
+
+.liquid-glass{background:rgba(0,0,0,.35);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:none;box-shadow:inset 0 1px 1px rgba(255,255,255,.06);position:relative;overflow:hidden}
+.liquid-glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.2px;background:linear-gradient(180deg,rgba(245,240,232,.25) 0%,rgba(245,240,232,.08) 20%,rgba(245,240,232,0) 40%,rgba(245,240,232,0) 60%,rgba(245,240,232,.08) 80%,rgba(245,240,232,.25) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+
+.grain{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.2}
+.grain svg{width:100%;height:100%;opacity:.06}
+
+.art-bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 30%, rgba(0,20,30,.9) 0%, #000 65%)}
+.art-bg-glow{position:absolute;width:700px;height:500px;border-radius:50%;background:radial-gradient(circle, rgba(80,120,160,.08) 0%, transparent 70%);top:0;left:50%;transform:translateX(-50%);animation:drift 25s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(60px)}}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--font-display);font-style:italic;font-size:15px;color:rgba(245,240,232,.7);text-decoration:none;letter-spacing:.05em}
+.nav-back{font-size:11px;color:rgba(245,240,232,.35);text-decoration:none;letter-spacing:.2em;text-transform:uppercase;transition:color .3s}
+.nav-back:hover{color:var(--gold)}
+
+.hero{position:relative;z-index:1;min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 24px 80px}
+.hero-eyebrow{font-size:10px;color:var(--gold);letter-spacing:.4em;text-transform:uppercase;margin-bottom:20px;font-weight:600}
+.hero-title{font-family:var(--font-display);font-style:italic;font-size:clamp(2.4rem,6vw,4.8rem);color:var(--white);line-height:.92;letter-spacing:-.02em;max-width:800px;margin-bottom:28px;text-shadow:0 4px 40px rgba(0,0,0,.6)}
+.hero-title em{color:var(--gold)}
+.hero-meta{display:flex;align-items:center;gap:20px;font-size:11px;color:rgba(245,240,232,.35);letter-spacing:.1em;text-transform:uppercase}
+.hero-meta-sep{opacity:.3}
+
+.scroll-content{position:relative;z-index:2}
+.article-wrap{max-width:720px;margin:0 auto;padding:0 24px 120px}
+
+.article-lede{font-family:var(--font-display);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.6rem);color:rgba(245,240,232,.8);line-height:1.45;margin-bottom:56px;padding:40px;border-radius:24px}
+
+h2.section-head{font-family:var(--font-display);font-style:italic;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);line-height:1;letter-spacing:-.02em;margin:64px 0 24px}
+h2.section-head em{color:var(--gold)}
+
+.body-p{font-size:15px;color:rgba(245,240,232,.72);line-height:1.85;font-weight:300;margin-bottom:22px}
+.body-p strong{color:var(--white);font-weight:500}
+
+.pull-quote{border-left:2px solid var(--gold);padding:20px 28px;margin:40px 0;background:rgba(196,162,101,.04);border-radius:0 16px 16px 0}
+.pull-quote p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.1rem,2vw,1.4rem);color:var(--white);line-height:1.4;margin:0}
+.pull-quote cite{display:block;font-size:10px;color:var(--gold);letter-spacing:.25em;text-transform:uppercase;margin-top:12px;font-style:normal}
+
+.teaching-box{border-radius:20px;padding:32px;margin:40px 0;background:rgba(0,0,0,.4);border:1px solid rgba(196,162,101,.12)}
+.teaching-box .label{font-size:10px;color:var(--gold);letter-spacing:.35em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.teaching-box h3{font-family:var(--font-display);font-style:italic;font-size:1.3rem;color:var(--white);margin-bottom:14px}
+.teaching-box p{font-size:13px;color:rgba(245,240,232,.6);line-height:1.8;font-weight:300;margin-bottom:12px}
+.teaching-box p:last-child{margin-bottom:0}
+
+.distinction-block{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:32px 0;border-radius:16px;overflow:hidden}
+.distinction-col{padding:28px 24px;background:rgba(0,0,0,.4)}
+.distinction-col.wrong{border-top:2px solid rgba(245,240,232,.1)}
+.distinction-col.right{border-top:2px solid var(--gold)}
+.distinction-col .d-label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+.distinction-col.wrong .d-label{color:rgba(245,240,232,.25)}
+.distinction-col.right .d-label{color:var(--gold)}
+.distinction-col p{font-size:13px;color:rgba(245,240,232,.6);line-height:1.75;font-weight:300}
+
+.cta-section{border-radius:28px;padding:48px 40px;margin-top:80px;text-align:center}
+.cta-section .label{font-size:10px;color:var(--gold);letter-spacing:.35em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.cta-section h2{font-family:var(--font-display);font-style:italic;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);line-height:.95;margin-bottom:20px}
+.cta-section h2 em{color:var(--gold)}
+.cta-section p{font-size:14px;color:rgba(245,240,232,.6);line-height:1.8;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto}
+.btn-gold{background:var(--gold);color:var(--bg);padding:14px 32px;border-radius:9999px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,162,101,.3)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid rgba(196,162,101,.3);padding:14px 32px;border-radius:9999px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;transition:all .3s;margin-left:12px}
+.btn-outline:hover{background:rgba(196,162,101,.08)}
+
+footer{position:relative;z-index:2;padding:40px 24px;text-align:center;border-top:1px solid rgba(245,240,232,.05)}
+.footer-brand{font-family:var(--font-display);font-style:italic;font-size:15px;color:var(--white);margin-bottom:12px}
+.footer-copy{color:rgba(245,240,232,.15);font-size:10px}
+
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease-out,transform .7s ease-out}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav{padding:16px 20px}
+  .hero{min-height:60vh;padding:0 20px 60px}
+  .article-wrap{padding:0 20px 80px}
+  .article-lede{padding:28px 24px}
+  .cta-section{padding:36px 24px}
+  .btn-outline{margin-left:0;margin-top:10px}
+  .distinction-block{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"><svg xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg></div>
+
+<div class="art-bg"><div class="art-bg-glow"></div></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Dharma Concierge</a>
+  <a href="index.html" class="nav-back">← Back</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">The Subtle Body</div>
+  <h1 class="hero-title">The Body: <em>Tsa, Lung, Tigle</em></h1>
+  <div class="hero-meta">
+    <span>Isaac, Acharya</span>
+    <span class="hero-meta-sep">·</span>
+    <span>13 min read</span>
+    <span class="hero-meta-sep">·</span>
+    <span>Channels, Winds, Essences</span>
+  </div>
+</section>
+
+<div class="scroll-content">
+<div class="article-wrap">
+
+  <div class="article-lede liquid-glass fade-in">
+    The subtle body is not a metaphor. It is not poetry borrowed to make meditation sound more interesting. Channels, winds, and essences are the physical ground where everything else on the path actually happens — and the structure they exhibit is the same holographic pattern that runs through the five wisdoms, the five kayas, the mandala, and the recognition that vipassana points at. The body is not separate from the view. The body is the view manifesting as flesh.
+  </div>
+
+  <h2 class="section-head fade-in">Practice doesn't happen in <em>your head</em></h2>
+
+  <p class="body-p fade-in">There's a Western assumption that meditation is a mental activity — that the body is the thing you have to sit still while the real work happens between your ears. This is wrong in a way that derails years of practice. The tradition has been precise about this for over a thousand years: <strong>mind rides on wind, and wind moves through channels, and channels are conditioned by essences.</strong> If the substrate is disturbed, the mind is disturbed. If you don't know that the substrate exists, you spend years trying to fix something in the wrong place.</p>
+
+  <p class="body-p fade-in">This is not the body of biology textbooks. It is also not separate from the body of biology textbooks. The subtle body is what the gross body is, looked at through the lens that the practices actually engage. Anatomy describes the meat. The subtle body describes the functional structure that the meat instantiates — the channels through which the actual training operates.</p>
+
+  <p class="body-p fade-in">When someone says they've been sitting for ten years and nothing has changed, the diagnosis is usually that they've been treating practice as a purely mental discipline applied to a body they never learned to inhabit. The channels are constricted. The winds are scattered. The essences are depleted. None of this gets addressed by trying harder to concentrate. It gets addressed by working with what the body actually is.</p>
+
+  <h2 class="section-head fade-in">The Three: <em>Tsa, Lung, Tigle</em></h2>
+
+  <p class="body-p fade-in">The Tibetan subtle body system is organized around three terms that map functional realities you can directly verify if you do the practices that engage them.</p>
+
+  <p class="body-p fade-in"><strong>Tsa</strong> — the channels. The network through which the subtle wind energies move. The primary channels are the central channel (uma), the right channel (roma), and the left channel (kyangma), with tens of thousands of subsidiary branches distributed through the body. Blockages in the channels produce specific forms of suffering — physical, emotional, cognitive. Open channels produce vitality and clarity. The channels are not invented. They are the structural map of where the training applies.</p>
+
+  <p class="body-p fade-in"><strong>Lung</strong> — the winds, the subtle breath-energies that move through the channels. Five primary lung-energies govern specific physiological and mental functions: the life-sustaining wind at the heart, the upward-moving wind in the throat, the pervading wind throughout the body, the fire-accompanying wind in the belly, the downward-clearing wind in the lower body. The mind rides on lung. This is why every serious tradition involves the breath. Breath is not a calming technique. Breath is the handle by which you reach the wind, and wind is the substrate the mind is currently riding.</p>
+
+  <p class="body-p fade-in"><strong>Tigle</strong> — the essence drops, the quintessence of awareness concentrated in the body. The white tigle at the crown comes from the father's essence. The red tigle at the navel comes from the mother's essence. The indestructible tigle at the heart holds the very subtle wind-mind and is the seat of consciousness across the entire mindstream. Tigle is not symbolic. It's the dimension of the system that the deepest practices directly engage.</p>
+
+  <p class="body-p fade-in">These three are inseparable. You cannot work with one without affecting the others. Breath practices work primarily on lung. Yantra yoga and physical movement work primarily on tsa. The most advanced inner-fire and Dzogchen practices work directly with tigle — but only after the channels are open enough and the winds gathered enough to support it. This is why the sequence matters. You cannot skip to the end.</p>
+
+  <h2 class="section-head fade-in">The same pattern,<br>at the <em>body level</em></h2>
+
+  <p class="body-p fade-in">This is the part the Western frame consistently misses, and it's the part that makes the whole thing make sense.</p>
+
+  <p class="body-p fade-in">The structure of channels, winds, and essences is not arbitrary. It is the same five-fold pattern that shows up everywhere else on the path. The five primary winds correspond to the five elements. The five elements correspond to the five aggregates. The five aggregates correspond to the five afflictions, which when recognized are the five wisdoms, which display as the five buddha families of the mandala. <strong>The subtle body is the mandala in physiological form.</strong> Not a metaphor. The same pattern, instantiated at the body level.</p>
+
+  <p class="body-p fade-in">This is what "holographic" means in the tradition. Every level of the path reflects every other level. The view of identitylessness that vipassana recognizes is the same structure as the mandala that deity yoga inhabits is the same structure as the channels and winds that the body actually exhibits. You are not learning seven different systems. You are learning one system seen from seven different angles, each angle the appropriate aperture for a particular phase of practice.</p>
+
+  <div class="pull-quote fade-in">
+    <p>"The body is not separate from the view. The body is the view manifesting as flesh. Working with the body is working with the view. Refusing to work with the body is refusing the view."</p>
+    <cite>— Dharma Concierge</cite>
+  </div>
+
+  <p class="body-p fade-in">When the channels are blocked, certain wisdoms cannot manifest — not because they aren't there, but because the substrate that displays them is constricted. When the winds are scattered, the mind cannot stabilize, and without stabilization vipassana does not arise. When the tigle is depleted, the deepest recognitions have no fuel to operate on. The body is not a vehicle the path uses. The body is one of the places the path is happening.</p>
+
+  <h2 class="section-head fade-in">Why the body is where<br><em>practice gets real</em></h2>
+
+  <p class="body-p fade-in">A common pattern in long-term practitioners is the one where you can talk about the view very accurately, you can sit for long periods without difficulty, and yet something fundamental hasn't shifted. The conceptual understanding is there. The mental discipline is there. But the recognition that should have arisen by now hasn't.</p>
+
+  <p class="body-p fade-in">In a high percentage of these cases, the missing piece is the body. The channels haven't been opened. The winds haven't been gathered. The tigle hasn't been worked with. The practitioner has been doing the mental version of practice on top of a substrate that was never engaged. It's like trying to drive a car while ignoring that the engine exists. You can steer all you want; if the engine isn't running, you don't go anywhere.</p>
+
+  <div class="distinction-block fade-in">
+    <div class="distinction-col wrong">
+      <div class="d-label">The Mistake</div>
+      <p>Treating meditation as a mental discipline. Sitting more, concentrating harder, reading more texts. Ignoring the breath beyond noticing it. Ignoring posture beyond not slumping. Treating the body as an inconvenience that must be quieted so the real practice can happen.</p>
+    </div>
+    <div class="distinction-col right">
+      <div class="d-label">The Actual Path</div>
+      <p>Working with breath as the handle to lung. Working with posture as the alignment of tsa. Engaging the body in yantra, prostration, mantra, ritual movement. Treating the body as the physical instance of the same pattern the view describes. Practice happens in the channels, not in the abstract.</p>
+    </div>
+  </div>
+
+  <p class="body-p fade-in">The Mahayana texts are explicit about this. The Six Yogas of Naropa exist because Indian and Tibetan masters recognized that the deepest realizations cannot be reached without direct work on the subtle body. The Dzogchen tradition has an entire stream — the upadesha series, the trekchod and thogal practices — that works directly with the channels and the tigle at the heart. The dakini transmission, which is the heart of the tantras, is fundamentally about what happens when the subtle body becomes the field of practice.</p>
+
+  <h2 class="section-head fade-in">What gets <em>damaged</em><br>in modern life</h2>
+
+  <p class="body-p fade-in">The subtle body of a modern person is, by traditional standards, in rough shape before practice ever begins. This is not a moral judgment. It's a structural observation about what daily life is doing to channels, winds, and essences before a single session of meditation has started.</p>
+
+  <p class="body-p fade-in">Constant screen time disturbs the upper winds and pulls the lung into the head — which is why so many practitioners report that they cannot get out of the heady, watching-themselves quality of attention. Irregular eating disturbs the fire-accompanying wind, which destabilizes the entire metabolic foundation that the channels depend on. Chronic stress depletes the tigle — the essence — and this depletion is what shows up as a feeling that nothing is replenishing no matter how much you sleep. Sedentary work constricts the channels through which lung is supposed to move freely. Disrupted circadian rhythm scatters the wind that is supposed to gather at night to support the depth of practice.</p>
+
+  <p class="body-p fade-in">None of this gets addressed by sitting harder. All of this gets addressed by understanding that practice is not a thing applied to a separate body but a thing that happens through the body — and that the body needs to be in a state that can carry it. This is what the tradition has always understood and what the West, in its mind-body dualism, keeps failing to learn.</p>
+
+  <h2 class="section-head fade-in">Chulen —<br>the <em>substrate-level support</em></h2>
+
+  <p class="body-p fade-in">This is where the tradition gets specific in a way modern practitioners are unprepared for. There is an entire class of traditional ritual support — chulen — formulated by accomplished masters specifically to nourish the subtle body in ways ordinary food cannot reach.</p>
+
+  <p class="body-p fade-in">Chulen literally means "taking the essence." It refers to a category of practice — and of material support — that works with the tigle dimension of the subtle body. Ordinary food nourishes the gross body. Chulen extracts and delivers the subtle nutritive essence that sustains the energy body and, by extension, the depth of practice itself.</p>
+
+  <p class="body-p fade-in">Ju Mipham Rinpoche — one of the greatest scholars and practitioners of the 19th century, whose Black Manjushri practice was his personal yidam throughout his entire life — left specific recipes. Formulations of herbs, mineral substances, and blessing-active materials prepared under strict tantric protocols. These are not folk remedies. They are formulated by a master who had complete knowledge of both the pharmacological and the subtle-body dimensions of the substances involved.</p>
+
+  <p class="body-p fade-in">Chatral Rinpoche — one of the most revered Dzogchen masters of the 20th century — used chulen for the last 25 years of his life and lived to 102. The connection between sustained chulen use and the longevity of accomplished practitioners is not incidental. It is one of the open secrets of the tradition.</p>
+
+  <div class="teaching-box fade-in">
+    <div class="label">Traditional Ritual Support</div>
+    <h3>What Chulen Actually Does</h3>
+    <p>Chulen is not a vitamin. It is not a supplement. It is traditional ritual support — a substance prepared according to specific tantric protocols, blessed through mantra and visualization, designed to interact with the tigle and lung dimensions of the subtle body in ways that go beyond gross chemical composition. The preparation is part of the substance. Without the protocols, you have the herbs but not the chulen.</p>
+    <p>The tradition's criteria for what "working" looks like are precise: increased clarity in sitting, reduced gross hunger during intensive practice periods, more consistent access to the meditative states you're working with, and over time a perceptible strengthening of the vitality-current that carries practice forward. Not a feeling of being "energized." A structural change in the substrate that practice operates on.</p>
+    <p>Black Manjushri Chulen, prepared from Ju Mipham Rinpoche's recipe, is the chulen offered through Dharma Concierge. <a href="index.html#chulen" style="color:var(--gold)">See the chulen on the main page</a> for what is currently available and how to receive it.</p>
+  </div>
+
+  <h2 class="section-head fade-in">The Six Yogas,<br>tummo, and the <em>inner heat</em></h2>
+
+  <p class="body-p fade-in">Once you understand the framework of channels, winds, and essences, the practices that work directly with the subtle body stop being exotic and start being intelligible. They are not mysterious. They are technically specific.</p>
+
+  <p class="body-p fade-in">Tummo — inner heat practice — is the most famous of the six yogas. It is the practice of generating heat in the central channel by gathering lung at the navel and igniting the dormant essence. This is what the Tibetan yogis demonstrated when they dried wet sheets with body heat in winter retreat. It is not a metabolic trick. It is the precise effect of getting lung into the central channel under specific conditions.</p>
+
+  <p class="body-p fade-in">Vase breathing — the foundational technique behind tummo and many other practices — is the technique of holding the lung at the navel below the diaphragm in a way that gathers it into the central channel. It is taught only after the channels are sufficiently open to handle it. Done correctly, it is the most direct intervention in the subtle body available in the tradition. Done without the channels prepared, it produces disturbance rather than awakening.</p>
+
+  <p class="body-p fade-in">Yantra yoga — the physical movement tradition associated with Vairochana and brought into the Nyingma stream — works on the channels directly. The postures and sequences are not stretches. They are precise movements designed to open specific channel structures and clear specific obstructions. This is why yantra looks different from yoga as commonly practiced in the West: the form follows the channel map, not the muscle map.</p>
+
+  <p class="body-p fade-in">All of these practices share a single logic: <strong>the body is the field of practice, and the practices engage the body at the level of the subtle structure it actually has.</strong> Without that framework, the practices look like exotic techniques. With the framework, they look like exactly what you would do if you understood the structure being trained.</p>
+
+  <h2 class="section-head fade-in">The endogenous map —<br>what <em>neuroscience</em> is starting to find</h2>
+
+  <p class="body-p fade-in">The Tibetan model has a specific account of what happens in deep meditation at the level of the nervous system — an account that is startlingly consonant with what biochemistry is beginning to understand about endogenous altered states.</p>
+
+  <p class="body-p fade-in">The Kati channel — a specific subtle channel described in Dzogchen texts as running from the heart to the eyes — corresponds to what neuroscience now identifies as the visual cortex pathway for certain classes of endogenous experience. The tigle at the heart that "travels up to the eyes" in thogal practice is tracking something real about the physiology of visionary experience.</p>
+
+  <p class="body-p fade-in">The tradition's account of what happens during deep practice — lung entering the central channel, the gross winds dissolving, the tigle at the heart becoming luminous — is a functional description, not a poetic one. It describes a specific physiological event that occurs under specific conditions of practice. That event has measurable correlates. The tradition got there a thousand years before anyone could put a meditator in a scanner.</p>
+
+  <p class="body-p fade-in">This is not an argument that modern science is now validating Buddhism. The relationship is the other way around. The Tibetan tradition has been doing precise empirical work on the subtle body for over a millennium. Western science is finally building instruments capable of detecting some of the gross correlates of what the tradition has been describing all along.</p>
+
+  <h2 class="section-head fade-in">How to actually <em>use this</em></h2>
+
+  <p class="body-p fade-in">You don't have to be doing advanced Vajrayana practice to benefit from understanding the subtle body. The basic framework changes how you relate to your daily practice in ordinary terms.</p>
+
+  <p class="body-p fade-in">When practice feels dry, that's lung. The winds are disturbed — usually by too much mental activity, too much screen time, eating irregularly, not sleeping. The remedy is not to push harder in sitting. It is to work with the wind: slow the breath, regularize eating, get outside, reduce the cognitive load before you sit. The body needs to be in a state that can carry the practice.</p>
+
+  <p class="body-p fade-in">When you feel heavy and unmotivated, the vitality-current is depleted. The remedy is not more effort. It is restoration: ritual support, physical movement that opens rather than depletes, spending time in environments that nourish rather than drain. The tradition has specific practices for this. They are not optional. They are the maintenance that keeps the system capable of the deeper work.</p>
+
+  <p class="body-p fade-in">When practice suddenly opens and there's unusual clarity or visionary quality, that is tigle moving. Don't grasp it. Don't try to hold it. Just note that something is happening at a different level of the system than your usual thinking mind, and keep practicing. The visionary moments are not the goal. They are signs that the substrate is engaging.</p>
+
+  <p class="body-p fade-in">The framework converts practice from something you do to something you inhabit. You are not sitting in spite of having a body. You are sitting through the body, into the channels, with the winds, on the essences. The body is not the obstacle. The body is the path manifesting as flesh, and learning to work with it — with the channels, the winds, the essences, and the traditional supports that nourish them — is what the path actually is at this level.</p>
+
+  <div class="cta-section liquid-glass fade-in">
+    <div class="label">Continue the Path</div>
+    <h2>The body has been <em>mapped</em>.<br>Now: the <em>mind</em>.</h2>
+    <p>The subtle body shows the same five-fold pattern that runs through the whole path. The mind, examined directly, shows it again — not as something the body produces, but as the awareness in which both body and world arise. The next post turns from the channels to the one who knows the channels are there.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <a href="index.html" class="btn-gold">Back to Dharma Concierge</a>
+      <a href="blog-mind.html" class="btn-outline">Continue → The Mind</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <div class="footer-brand">Dharma Concierge</div>
+  <div class="footer-copy">&copy; 2026 Dharma Concierge &middot; Isaac, Acharya &middot; Changchub Drime Pema Wangchuk</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

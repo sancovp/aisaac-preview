@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>cave-unicorn — Where It Fits — Isaac</title>
+<meta name="description" content="The last-mile organ that closes the gap between content the machine produces and readers the machine reaches.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/blog/cave-unicorn-how-it-works-deep-dive.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="cave-unicorn — Where It Fits — Isaac">
+<meta property="og:description" content="The last-mile organ that closes the gap between content the machine produces and readers the machine reaches.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/cave-unicorn-how-it-works-deep-dive.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/blog/cave-unicorn-how-it-works-deep-dive.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body data-depth="2">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav">
+  <a href="../isaac.html" class="logo">Isaac</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav id="navlinks" class="nav-links" aria-label="The ladder">
+    <a href="../watch.html">Watch</a>
+    <a href="../learn.html">Learn</a>
+    <a href="../build.html">Build</a>
+    <a href="../run.html">Run</a>
+    <a href="../notes/" aria-current="page">Notes</a>
+    <a href="../pricing.html" class="nav-cta">Pricing</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <article class="note">
+    <p class="eyebrow">July 2026</p>
+    <h1>cave-unicorn — Where It Fits</h1>
+    <p class="dek">The last-mile organ that closes the gap between content the machine produces and readers the machine reaches.</p>
+
+<blockquote>
+    <p>The journey of this framework: <a href="cave-unicorn-the-story.html">the story</a></p>
+    </blockquote>
+    <hr />
+    <h2>The system it lives in</h2>
+    <p>cave-unicorn is the <strong>distribution layer</strong> of the SANCREV SDK — an L9 cave-auxiliary library (same layer law as <code>cave-discord</code>) that runs <strong>inside the CAVE runtime</strong> as CronAutomation organs. To understand where it sits, start with the full tower:</p>
+    <pre><code>┌─────────────────────────────────────────────────────────────┐
+    │  L0  LAMAI            — the acting whole: VEC chain + economy loop               │
+    │  L1  NEXUS             — parks, Rangers, wizards, signup                         │
+    │  L2  SANCREV OPERA     — the operated interface: spaces, ledger-room, iframes     │
+    │                    ─── SOVEREIGNTY BOUNDARY (up = strings, down = commands) ───   │
+    │  L3  WORLD             — Matrix engine + WOOM SDK                                 │
+    │  L4  WORK SPINE        — GIINT/TK → missions → goldenize → GEAR → VEC facts     │
+    │  L5  SUBSTRATE         — CartON · dragonbones · treeshell · SOMA · CB            │
+    │  L6  HEAVEN            — agent framework (constitutes agents)                     │
+    │  L7  CAVE              — agent runtime: HTTP services, organs, automations        │
+    │  L8  CODING AGENT      — commodity slot: Claude Code / OM / opencode              │
+    │  L9  SANCREV SDK       — libraries that build sancrev: cave-discord,              │
+    │                           cave-unicorn (here), paia-builder, sanctum             │
+    └─────────────────────────────────────────────────────────────┘
+                        │
+                        │  cave-unicorn's organs
+                        │  (L9 library code) run as
+                        ▼  CronAutomations on L7 CAVE Heart tick
+                     ┌───────────────────────────────────────┐
+                     │  GITHUB PAGES (aisaac site)          │
+                     │  blog/ · frameworks.html · apply.html │
+                     └───────────────────────────────────────┘
+    </code></pre>
+    <p>cave-unicorn is <strong>L9 code</strong>: it is a library that SANCREV coders use to build distribution functionality. Its three CronAutomation organs — <code>fire_site_publish</code>, <code>fire_socials_pack</code>, <code>fire_socials_images</code> — live inside <strong>L7 CAVE</strong> (the runtime that virtualizes the coding-agent slot), registered via the hot-reload automations dir the Heart tick reads. L7 consumes L9; cave-unicorn never imports CAVE back. The seam is <code>cave_seam.py</code>.</p>
+    <hr />
+    <h2>What flows through it</h2>
+    <p>The pipeline is a <strong>three-stage organ chain</strong>, each firing on the nightly Heart tick, driven by property flags on CartON <code>Wiki</code> nodes:</p>
+    <pre><code>02:00  Blog organ (cave.core.publishing.blog_organ_nightly)
+           → produces Blog_Request {status: done, output_path: X.md}
+                  ↓
+    02:37  fire_site_publish  [unicorn_site_publish CronAutomation]
+           → renders X.md → blog/{slug}.html  (post skeleton + markdown → HTML)
+           → inserts an idempotent card into blog/index.html
+           → git add / commit / (push if configured)
+           → flips {site_published: true, site_url, site_published_at}
+           → fires Discord announce (cave_discord)
+                  ↓
+    03:07  fire_socials_pack  [unicorn_socials_pack CronAutomation]
+           → scans {site_published: true, no socials_packed yet}
+           → FRAMEWORK-FIRST GATE: skips if sibling journey_core.json lacks deep_dive_url
+           → dispatches heaven/MiniMax agent → fills journey_core.json + journey_blog.json
+           → module enforces canonical core (overwrites agent-written JSON with authority)
+           → deterministic render: twitter thread · LinkedIn post · Discord copy · image prompts
+           → flips {socials_packed: true, socials_pack_path}
+                  ↓
+    03:37  fire_socials_images  [unicorn_socials_images CronAutomation]
+           → reads {socials_packed: true, no images_rendered yet}
+           → dispatches claude -p agent → excalidraw rendering of hero.png / social-share.png / thumbnail.png
+           → verifies PNG artifacts exist
+           → flips {images_rendered: true, images_dir}
+                  ↓
+           ready-to-post queue: {socials_queue}/{slug}/pack.md + images/
+           (I post manually from the queue for now; direct Twitter/LinkedIn API posting is planned)
+    </code></pre>
+    <p><strong>What arrives at cave-unicorn</strong>: Blog_Request nodes in CartON with <code>status: done</code> and an <code>output_path</code> pointing to a markdown file. The blog markdown contract: first <code>#</code> heading = title; first <code>*...*</code> paragraph = hook/subtitle; the rest is body.</p>
+    <p><strong>What leaves cave-unicorn</strong>: A live HTML post on GitHub Pages (<code>{site_base_url}/blog/{slug}.html</code>), an updated blog index card with bumped count, a pushed git commit, a Discord announcement, a socials pack in the queue directory, and rendered PNG images — each stage updating the CartON node so the next stage knows what to pick up.</p>
+    <p><strong>The never-raises contract</strong>: every <code>fire_*</code> function catches exceptions and writes them to the CartON node rather than raising. The Heart tick never crashes on a bad node.</p>
+    <hr />
+    <h2>What it unlocks</h2>
+    <p><strong>The last-mile is closed.</strong> Before cave-unicorn, the nightly blog organ wrote perfect markdown every night at 02:00 — and that was where the story ended. There was no path from the output directory to a live URL. Reaching <code>sancovp.github.io/aisaac/blog</code> meant manual HTML conversion, hand-editing the post skeleton, committing to GitHub, and pushing. Every single time.</p>
+    <p>Three things become possible now that the distribution pipeline exists:</p>
+    <p><strong>The machine has an audience.</strong> Content that exists in the machine arrives at a reader screen every night without a human in the loop. The system can now say something and mean it — because someone might be listening. This changes what gets built, because now you know someone is watching.</p>
+    <p><strong>The content organ and the business organ are the same machine.</strong> UNICORN is described in the CAVE architecture doc as "the business game of CAVE" — whether the business side works. The blog organ produces; cave-unicorn delivers; the socials organ amplifies. These are three views of one process, not three separate manual workflows.</p>
+    <p><strong>The framework chapter pipeline gates correctly.</strong> The framework-first gate (<code>_framework_ready</code>) prevents the socials organ from packing a blog whose CTA/demo sections have no real links to point at. A journey whose sibling <code>journey_core.json</code> lacks <code>deep_dive_url</code> and <code>plugin_url</code> is held at the socials leg and retried the next night — once the chapter step has wired those links. The pipeline enforces its own completeness contract.</p>
+    <hr />
+    <h2>Run it inside your own system</h2>
+    <p>cave-unicorn is the <strong>reference implementation</strong> of the distribution pipeline organ. Install it and wire it into your CAVE setup.</p>
+    <h3>Install</h3>
+    <pre><code class="language-bash">pip install cave-unicorn
+    </code></pre>
+    <p>Or from source:</p>
+    <pre><code class="language-bash">pip install --no-deps /path/to/cave-unicorn
+    </code></pre>
+    <h3>The CLI verbs</h3>
+    <pre><code class="language-bash"># 0. Set up config (creates unicorn_config.json in the data dir)
+    cave-unicorn init
+
+    # View current config
+    cave-unicorn show
+
+    # Set a config value (JSON types accepted: true, 3, [&quot;a&quot;,&quot;b&quot;])
+    cave-unicorn set push true
+
+    # Publish one blog file directly (no CartON scan)
+    cave-unicorn publish path/to/blog1.md --tags &quot;tool-eng context-eng&quot; --no-push
+
+    # Rewrite internal links so chapter bundles point to live posts
+    cave-unicorn publish path/to/blog2.md \
+      --link &quot;cave-unicorn-the-story.html=cave-unicorn-how-it-works-deep-dive.html&quot;
+
+    # List done-but-unpublished Blog_Request nodes
+    cave-unicorn pending
+
+    # Publish all pending blogs
+    cave-unicorn publish-pending --push
+
+    # Emit the CronAutomation schemas into the hot-reload dir (site + socials + images)
+    cave-unicorn enable-automation --which all --push
+
+    # Check what is waiting for socials
+    cave-unicorn socials-pending
+
+    # Generate socials packs (scan mode or direct)
+    cave-unicorn pack-socials --md-path path/to/blog.md --live-url &quot;https://...&quot;
+
+    # Render images for a pack
+    cave-unicorn render-images --pack-path socials_queue/my-slug/
+    </code></pre>
+    <h3>Config shape</h3>
+    <p>The <code>init</code> command creates a config file with these keys:</p>
+    <pre><code class="language-json">{
+      &quot;site_root&quot;: &quot;/path/to/aisaac-checkout&quot;,
+      &quot;blog_dir&quot;: &quot;blog&quot;,
+      &quot;site_base_url&quot;: &quot;https://sancovp.github.io/aisaac&quot;,
+      &quot;default_tags&quot;: [&quot;framework&quot;],
+      &quot;push&quot;: false,
+      &quot;remote&quot;: &quot;origin&quot;,
+      &quot;branch&quot;: &quot;main&quot;
+    }
+    </code></pre>
+    <h3>The three organs as CronAutomations</h3>
+    <p>When you run <code>cave-unicorn enable-automation --which all</code>, three schemas land in the hot-reload automations dir. CAVE's Heart tick reads them and fires each on its schedule:</p>
+    <table>
+    <thead>
+    <tr>
+    <th>Organ</th>
+    <th>Schedule</th>
+    <th>What it does</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>unicorn_site_publish</code></td>
+    <td><code>37 2 * * *</code> (02:37)</td>
+    <td>Blog_Request done → live post + index card + push</td>
+    </tr>
+    <tr>
+    <td><code>unicorn_socials_pack</code></td>
+    <td><code>7 3 * * *</code> (03:07)</td>
+    <td>live blog → social posts + image prompts</td>
+    </tr>
+    <tr>
+    <td><code>unicorn_socials_images</code></td>
+    <td><code>37 3 * * *</code> (03:37)</td>
+    <td>pack → hero / social-share / thumbnail PNGs</td>
+    </tr>
+    </tbody>
+    </table>
+    <h3>Connect to your CAVE agent directly (programmatic)</h3>
+    <pre><code class="language-python">from cave_unicorn import cave_seam
+
+    # Register on a live CAVEAgent (the sancrev boot path)
+    cave_seam.register_with_cave(cave_agent)
+
+    # Or emit the schema straight to the hot-reload dir
+    cave_seam.emit_schema()  # site publish
+    cave_seam.emit_spec(cave_seam.build_socials_pack_automation())
+    cave_seam.emit_spec(cave_seam.build_socials_images_automation())
+    </code></pre>
+    <hr />
+    <p><em>cave-unicorn public repo: <a href="https://github.com/sancovp/cave-unicorn">github.com/sancovp/cave-unicorn</a></em></p>
+  </article>
+
+  <section class="receipts compact">
+    <div class="wrap measure">
+      <p class="eyebrow">Receipts</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="https://github.com/sancovp"><div class="receipt-k">Open source</div><h3>The engine this came out of</h3><p>Public repos, MIT, full commit history — this note describes code you can read.</p><span class="receipt-go">github.com/sancovp &rarr;</span></a>
+        <a class="receipt" href="../watch.html"><div class="receipt-k">Running now</div><h3>See it actually run</h3><p>The engine drawing its own explainer, live in the browser.</p><span class="receipt-go">Watch a world run &rarr;</span></a>
+      </div>
+    </div>
+  </section>
+  <p class="note-next">Next note: <a href="cave-unicorn-the-story.html"><b>cave-unicorn &rarr;</b></a></p>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>See one actually run.</h2>
+      <p>The fastest way to judge any of this is to watch the engine do it.</p>
+      <a class="cta-primary" href="../watch.html">Watch a world run &rarr;</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+<script src="../nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One engine. Many worlds. A loop that compounds. — Isaac</title>
+<meta name="description" content="This looks like a dozen separate products. It isn't — it's one engine that stands up a self-running world for whatever you're doing.">
+<link rel="canonical" href="https://sancovp.github.io/aisaac/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="One engine. Many worlds. A loop that compounds. — Isaac">
+<meta property="og:description" content="This looks like a dozen separate products. It isn't — it's one engine that stands up a self-running world for whatever you're doing.">
+<meta property="og:image" content="https://sancovp.github.io/aisaac/assets/og/home.png">
+<meta property="og:url" content="https://sancovp.github.io/aisaac/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<!-- data-depth="0" — THE DOOR rung of the density gradient (style.css §Tokens):
+     the most spacious setting on the site, biggest type, fewest elements, one
+     action. Without the attribute the homepage silently renders at depth 1
+     (the rung level) and the door reads a size too small. -->
+<body data-depth="0">
+<!-- ══════════════════════════════════════════════════════════════════════
+     TYPE 1 SPINE — HOME.  Rebuild spec §4 + THE DOOR SPEC §1.
+     Everything is in the DOM. No modal, no survey, no quiz, no exit-intent,
+     no sticky bar, no email capture, no 100vh empty hero, no audio.
+     The page renders complete with JavaScript disabled; nav.js only
+     collapses the mobile menu. The ONE permitted site-wide script.
+
+     THE DOOR (band 0) replaces the old B2 .claim + B3 .flush-top pair:
+     the claim and the artifact are now one first-screen composite, so a
+     visitor's first seconds are spent looking at the engine, not at a
+     sentence about the engine. RULE 01 mechanic 1.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- NO NAV — DELIBERATE (the ratchet law, Isaac 2026-08-07). index.html is
+     the ENTRYPOINT ONLY, a one-way door: no nav element anywhere on the site
+     routes back here, and this page ships no nav bar of its own. Its
+     sanctioned moves are all in the bands below — Enter, the three sort
+     cards, the ladder, the maker, the map. This also completes RULE 02's
+     screenshot test verbatim: the door's first viewport contains the running
+     world, one serif claim, one Enter — nothing else. -->
+
+<main id="main">
+
+  <!-- ══ BAND 0 — THE DOOR ═════════════════════════════════════════════
+       Stage left, copy right, both inside the first screen. The stage is
+       eager and above the fold on purpose: the claim is cashed by the
+       thing sitting next to it, not by the sentence.
+
+       DOOR-EMBED: lab/explainer.html?embed=door is the frozen contract URL
+       (THE DOOR SPEC §5.3). The frame is the boundary: this page owns the
+       frame, the lab owns everything inside it, and NEITHER RESKINS THE
+       OTHER — the exhibit keeping its own look is what keeps it a proof.
+       The bundles are loaded from lab/ by reference; nothing is forked or
+       duplicated here. Inside that mode the lab hides its own narration
+       toggle, so there is no audio at the door, and it ships its own
+       full-frame "Enter" anchor to ../watch.html.
+
+       STATUS, VERIFIED 2026-08-07: ?embed=door IS live in lab/scrub.js
+       (surface selection at scrub.js:127; the door's chrome-off + no-sound
+       rules and the in-frame #door-enter anchor at explainer.html:126-155,
+       206). An earlier note here said the mode did not exist and described a
+       ?bare=1&amp;p= interim with a parent-side veil overlay — that note was
+       written before the patch landed and is now WRONG; the interim and its
+       veil are both gone. Do not reinstate either.
+
+       (A stale warning about watch.html not existing on this branch stood
+       here; watch.html ships on this branch — verified 2026-08-07.)
+
+       COST, MEASURED (gzip -9, real bytes off disk — not an estimate).
+       First MOTION is gated on the diagram engine alone, because the lab
+       defers all three scripts with the presenter LAST:
+         explainer.html            13,355 raw /   4,710 gz
+         scrub.js                  18,605 raw /   6,610 gz
+         explainer.bundle.js      412,987 raw / 127,686 gz  <- first frame
+         presenter.bundle.js    1,300,750 raw / 363,193 gz  <- attaches late
+       => ~136 KB gz to first frame, ~490 KB gz to the full composite,
+       cached thereafter. The one mp3 (264 KB) is play-mode only and is
+       never fetched at the door.
+
+       COLD-LOAD WALL CLOCK — NOT MEASURED. An open debt, recorded rather
+       than skipped, and deliberately not guessed at. SPEC §2 wants
+       navigation-start → first engine frame on a cold Fast-3G load written
+       down here. There is no browser in this container, so it could not be
+       taken. Whoever first opens this page on a real device must take it and
+       write it in; above ~2.5s, escalate rather than quietly ship a slow
+       door. No poster image and no "loading…" spinner ship here either: a
+       spinner over a real engine is the same lie as a fake poster, in a
+       smaller font.
+       ══════════════════════════════════════════════════════════════════ -->
+  <section class="door">
+    <div class="wrap">
+
+      <div class="door-stage">
+        <figure class="artifact">
+          <div class="artifact-frame">
+            <iframe src="lab/explainer.html?embed=door"
+                    title="The explainer engine running live — two rendering engines on one clock"
+                    loading="eager" scrolling="no" referrerpolicy="no-referrer"></iframe>
+          </div>
+          <figcaption class="artifact-prov">
+            Not a video, not a GIF, not a mockup. Two rendering engines &mdash; a diagram pass and a
+            character pass &mdash; are running in your browser right now, on one clock, from the same
+            seven sentences the film renders from.
+            <a href="watch.html">&rarr; take the clock</a>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="door-copy">
+        <p class="eyebrow">Simulations and world loops</p>
+        <!-- ISAAC CALL — VARIANT A ships (below): protagonist address, present
+             tense, a fact the visitor verifies by looking left; the canonical
+             site claim is kept verbatim in the lede rather than deleted.
+             VARIANT B is a one-line swap: replace the heading text below with
+             "One engine. Many worlds. A loop that compounds." and move the
+             protagonist sentence into the figcaption above. One edit, no
+             other change. (The alternative is not written out as markup here
+             because a second heading tag in a comment trips the one-claim-
+             per-surface check.) -->
+        <h1>You&rsquo;re inside one right now.</h1>
+        <p class="lede">I build worlds that do work &mdash; a business, a body, a codebase, each
+          with departments, an economy and a record of what it actually did.
+          <strong>One engine. Many worlds. A loop that compounds.</strong> The thing moving to
+          the left is that engine, drawing its own explanation, live.</p>
+        <a class="cta-primary" href="watch.html">Enter &rarr;</a>
+        <p class="door-mini">Free. No email. About four minutes. You can leave whenever &mdash;
+          and the way out is the same door. &nbsp;&middot;&nbsp;
+          <a href="isaac.html">Who built this</a> &middot;
+          <a href="system.html">How it works</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ BAND 1 — THE SORT (RULE 01 mechanic 3) ════════════════════════
+       Names the WANT, never the reader. Each thread lands on a
+       structurally different kind of artifact, and each one ends in
+       something inspectable without talking to anybody. ═════════════════ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Three ways down</p>
+      <h2>Pick the thread you&rsquo;d actually pull.</h2>
+      <p class="lede">These go to different places on purpose. One ends in source code, one ends in
+        a business running, one ends in a world you can walk around in. All three are free and none
+        of them ask you for anything.</p>
+      <div class="cards">
+
+        <!-- Clone-command line RESTORED (product-landing ruling, 2026-08-07):
+             it was softened to "running code" only while no clone command
+             existed on the destination; build.html now carries dark-factory's
+             own clone command in its B3, so the promise is cashable again. -->
+        <a class="card" href="build.html">
+          <h3>I want to see the code that does this.</h3>
+          <p>The runtime, the compiler, the team library. Public, installable, old enough to have a
+            history you can read. It ends in a clone command, not a contact form.</p>
+          <span class="receipt-go">Open the source &rarr;</span>
+        </a>
+
+        <a class="card" href="run.html">
+          <h3>I want one of these running my business.</h3>
+          <p>A CEO agent and five departments that source, write, deliver, read the replies and
+            grade their own last round. What it does, what it refuses to do without a human, and
+            what it can&rsquo;t do yet &mdash; all on one page.</p>
+          <span class="receipt-go">See the business world &rarr;</span>
+        </a>
+
+        <a class="card" href="watch.html">
+          <h3>I just want to look around.</h3>
+          <p>The room where the engine runs, and the field notes written the night the
+            work happened &mdash; the diagrams playing live, the receipts one click down.</p>
+          <span class="receipt-go">Walk through it &rarr;</span>
+        </a>
+
+      </div>
+      <p class="mt-s"><a class="cta-secondary" href="isaac.html">Or meet the maker &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ══ B6 LADDER — the four doors, demoted from a modal to five rungs.
+       Salvaged from system.html's .climb band, now with prices and a live
+       fifth rung: the audit's "names no prices, never links to pricing"
+       defect, fixed.
+
+       FROZEN OFFER SURFACE (RULE 00 law 1). The figures below are
+       main-attested. Nobody edits, adds to, or deletes them but Isaac.
+       .dark added in the visual pass: the door opened onto three identical
+       plain bands in a row — the ladder is the rhythm break. ══ -->
+  <section class="dark">
+    <div class="wrap">
+      <p class="eyebrow">Where to start</p>
+      <h2>Five rungs. Climb as far as you want, stop wherever you like.</h2>
+      <nav class="ladder" aria-label="The ladder">
+        <a class="rung" href="watch.html">
+          <span class="rung-n">01</span><span class="rung-t">Watch a world run</span>
+          <span class="rung-d">free &mdash; the engine, live, in your browser</span>
+        </a>
+        <a class="rung" href="learn.html">
+          <span class="rung-n">02</span><span class="rung-t">Learn to build them</span>
+          <span class="rung-d">the patterns and the notes, free &middot; community $65/mo</span>
+        </a>
+        <a class="rung" href="build.html">
+          <span class="rung-n">03</span><span class="rung-t">Run your work inside one</span>
+          <span class="rung-d">open source &mdash; install it today</span>
+        </a>
+        <a class="rung" href="run.html">
+          <span class="rung-n">04</span><span class="rung-t">Have one run your business</span>
+          <span class="rung-d">built with you &mdash; from $1,000/mo</span>
+        </a>
+        <a class="rung" href="pricing.html">
+          <span class="rung-n">05</span><span class="rung-t">What it costs</span>
+          <span class="rung-d">every price on one page</span>
+        </a>
+      </nav>
+      <p class="mt-s"><a class="cta-secondary" href="system.html">How the engine works, and what it can&rsquo;t do yet &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ══ SAME ENGINE, DIFFERENT WORLD — the two-panel block lifted from
+       healthworld/index.html, which already writes the category claim
+       better than anything else in the repo. A world either has a page or
+       it is not shown: no greyed "soon" cards.
+
+       LINK NOTE: this panel pointed at worlds/health.html, which does not
+       exist on this branch. Rather than delete a canon band or ship a 404,
+       it points at healthworld/index.html — the real page the band was
+       lifted from, live in the repo today. Repoint if worlds/health.html
+       ever lands. (Was .dark; the ladder above took the dark stripe, so this
+       band goes plain to keep the alternation.) ══ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The category claim</p>
+      <h2>Same engine. Different world.</h2>
+      <p class="lede">A world is a domain run like a company: departments, signals, maintenance schedules, routing, failure cascades. Change the domain and the departments change. The engine underneath does not.</p>
+      <div class="panels">
+        <a class="panel" href="run.html">
+          <h3>Jobworld &mdash; business</h3>
+          <p>A CEO agent and self-grading departments doing the outreach, the writing, the delivery and the measurement. Your company, running itself, with you reviewing the work.</p>
+          <span class="receipt-go">Have one run your business &rarr;</span>
+        </a>
+        <a class="panel" href="healthworld/index.html">
+          <h3>HealthWorld &mdash; the body</h3>
+          <p>Fourteen body systems as fourteen departments &mdash; each with visibility, a maintenance cadence, and a professional to route to. Same pattern, no AI anywhere in the domain.</p>
+          <span class="receipt-go">See the world &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ THE COMPOUNDING LOOP — salvaged from school.html's bootstrap loop
+       (the compounding argument in lore-free 8-second English) and closed
+       with system.html:248. ══ -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Why it compounds</p>
+      <h2>The loop, in one line.</h2>
+      <div class="loopband">
+        <div class="loop">
+          <span class="lstep">Do it</span><span class="sep">&rarr;</span>
+          <span class="lstep">that&rsquo;s the <b>proof</b></span><span class="sep">&rarr;</span>
+          <span class="lstep">the proof is the <b>content</b></span><span class="sep">&rarr;</span>
+          <span class="lstep">the content brings <b>people</b></span><span class="sep">&rarr;</span>
+          <span class="lstep">they fund the <b>next build</b></span><span class="sep">&rarr;</span>
+          <span class="lstep">loop</span>
+        </div>
+        <div class="loop-return">&#10226; &nbsp; which produces more work, more proof, more people &mdash; forever</div>
+        <p class="loop-note">You&rsquo;re reading the output of this loop right now. <b>The marketing isn&rsquo;t separate from the product &mdash; the product produces the marketing.</b> This site, its notes, and the explainer above were built by the thing being sold. The proof isn&rsquo;t a testimonial. The proof is that it exists.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B4 RECEIPTS — the site-canonical 4-up set, salvaged near-verbatim
+       from the old index.html:195-219 (the best-written block on the site),
+       with the fourth card restored and the grid fixed to 4-up. Do not add
+       a fifth: the grid is repeat(4,1fr) and a fifth orphans. ══ -->
+  <section class="receipts dark">
+    <div class="wrap">
+      <p class="eyebrow">Receipts, not testimonials</p>
+      <h2>Don&rsquo;t take my word for it &mdash; take the code.</h2>
+      <p class="receipts-lede">No logo wall, no invented case studies. The proof is public: the engine is open source, the demo is a real site, and the notes are out in the open.</p>
+      <div class="receipts-grid">
+        <a class="receipt" href="https://github.com/sancovp">
+          <div class="receipt-k">Open source</div>
+          <h3>The engine, on GitHub</h3>
+          <p>Installable and public: <b>heaven-framework</b>, <b>chaincompiler</b>, <b>carton-mcp</b>, <b>skilltree</b>. Read it, run it, fork it.</p>
+          <span class="receipt-go">github.com/sancovp &rarr;</span>
+        </a>
+        <a class="receipt" href="watch.html">
+          <div class="receipt-k">Running now</div>
+          <h3>A world running in your browser</h3>
+          <p>Not a video of a demo. The thing itself, rendering as you scroll, on this domain.</p>
+          <span class="receipt-go">Watch it run &rarr;</span>
+        </a>
+        <!-- LINK NOTE: worlds/plumbing.html does not exist on this branch.
+             Pointing at cinematic-plumbing.html — the same run's output,
+             live in the repo today. Repoint if worlds/plumbing.html lands. -->
+        <a class="receipt" href="cinematic-plumbing.html">
+          <div class="receipt-k">One run&rsquo;s output</div>
+          <h3>What one run produced</h3>
+          <p>A live local-business site &mdash; copy, layout, imagery, the lot &mdash; produced by the system. Not a mockup.</p>
+          <span class="receipt-go">See the build &rarr;</span>
+        </a>
+        <!-- COUNT CHECK: 54 published posts under blog/ as of 2026-08-07
+             (55 files minus index.html). Builder C merges two duplicate
+             pairs and deletes doctor.html, taking it to ~51 — which is why
+             this reads "fifty-plus" and not a brittle exact figure. -->
+        <a class="receipt" href="notes/">
+          <div class="receipt-k">Open notes</div>
+          <h3>Fifty-plus field notes</h3>
+          <p>The research behind the work, published as it was written &mdash; not cleaned up afterwards, not locked in a deck.</p>
+          <span class="receipt-go">Read the notes &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ B9 CTA — one, and it is the door again. The homepage's job is
+       rung 1: not "choose a door", and never a sales ask. The primary CTA
+       is spent at the top (Enter), so this one is secondary by law. ══ -->
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="eyebrow">Start at the bottom</p>
+      <h2>Nothing to decide. You already saw it run.</h2>
+      <p>It costs nothing and asks for no email. If it doesn&rsquo;t hold up, you&rsquo;ve lost a few minutes and learned something true about the claim. If you&rsquo;d rather know who&rsquo;s behind it: <a href="isaac.html">the maker</a>.</p>
+      <p class="mt-s"><a class="cta-secondary" href="watch.html">Back through the door &rarr;</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; 2026 Isaac</span>
+  <span class="tagline">Built by the engine it sells. That is the whole proof.</span>
+</footer>
+
+<!-- nav.js not loaded: this page carries no nav (one-way door). -->
+</body>
+</html>
